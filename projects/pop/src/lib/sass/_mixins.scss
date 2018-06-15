@@ -1,0 +1,19 @@
+@import '_variables.scss';
+
+@function shade($color, $percentage) {
+  @return mix(#000000, $color, $percentage);
+}
+
+@function tint($color, $percentage) {
+  @return mix(#FFFFFF, $color, $percentage);
+}
+
+@function gradient($color, $baseStopPercent) {
+  @return linear-gradient(110deg, $color 0%, $color $baseStopPercent, adjust-hue($color, 30deg) 80%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
