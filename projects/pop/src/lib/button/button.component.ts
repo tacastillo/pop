@@ -1,4 +1,4 @@
-import { Component, Input, AfterContentInit, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
+import { Component, Input, AfterContentInit, ElementRef, ViewEncapsulation, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'pop-button',
@@ -6,7 +6,7 @@ import { Component, Input, AfterContentInit, ViewChild, ElementRef, ViewEncapsul
   styleUrls: ['./button.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ButtonComponent implements AfterContentInit {
+export class PopButton implements AfterContentInit, OnChanges {
 
   /**
    * Whether or not to use the primary or secondary color for the button
@@ -16,22 +16,35 @@ export class ButtonComponent implements AfterContentInit {
   /**
 	 * Relative size of the button
 	 */
-  @Input('size') size: 'sm' | 'md' | 'lg' = 'md';
+  @Input('size') size: 'icon' | 'sm' | 'md' | 'lg' = 'md';
 
   /**
    * Whether or not the button is disabled
    */
   @Input('disabled') disabled = false;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(public elementRef: ElementRef) { }
 
-  ngAfterContentInit() {
-    this.elementRef.nativeElement.classList.add(this.size);
+  ngAfterContentInit(): void {
+    this.addClasses();
   }
 
-  buttonOver(event, didClick) {
-    console.log(event, this);
-    // if (didClick)
+  ngOnChanges(): void {
+    this.elementRef.nativeElement.classList = [];
+    this.addClasses();
+  }
+
+  /**
+   * Adds the `size`, `type`, and `disabled` classes to the button
+   * Factored out and called in `ngAfterContentInit` and `ngOnChanges`
+   */
+  private addClasses(): void {
+    this.elementRef.nativeElement.classList.add(this.size);
+    this.elementRef.nativeElement.classList.add(this.type);
+
+    if (this.disabled) {
+      this.elementRef.nativeElement.classList.add('disabled');
+    }
   }
 
 }

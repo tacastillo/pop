@@ -1,70 +1,55 @@
 @import '../sass/_variables.scss';
 @import '../sass/_mixins.scss';
 
-$sm-width: 48px;
-$md-width: 72px;
-$lg-width: 96px;
-$aspect-ratio: 2.4;
+@mixin button-theme($primaryColor, $secondaryColor) {
+  $primary: $primaryColor;
+  $secondary: $secondaryColor;
+}
 
 pop-button {
   display: inline-block;
   position: relative;
   cursor: pointer;
   text-align: center;
+
   color: $white;
-  padding: 8px;
+  @include shadow-base();
+
+  padding: $button-padding;
+
+  min-height: $button-height;
+  line-height: $button-height;
 
   * {
     cursor: pointer;
   }
 
+  &.icon {
+    min-width: $button-height;
+    border-radius: 100%;
+  }
+
   &.sm {
-    min-width: $sm-width;
-    min-height: $sm-width / $aspect-ratio;
-    line-height: $sm-width / $aspect-ratio;
-    border-radius: $sm-width / 3;
+    min-width: $button-sm-width;
+    border-radius: $button-sm-width / 3;
   }
 
   &.md {
-    min-width: $md-width;
-    min-height: $md-width / $aspect-ratio;
-    line-height: $md-width / $aspect-ratio;
-    border-radius: $md-width / 3;
+    min-width: $button-md-width;
+    border-radius: $button-md-width / 3;
   }
 
   &.lg {
-    min-width: $lg-width;
-    min-height: $lg-width / $aspect-ratio;
-    line-height: $lg-width / $aspect-ratio;
-    border-radius: $lg-width / 3;
+    min-width: $button-lg-width;
+    border-radius: $button-lg-width / 3;
   }
 
-  &:hover {
-    &.sm::after {
-      background-position: ($sm-width / 3) * -1;
-    }
-
-    &.md::after {
-      background-position: ($md-width / 3) * -1;
-    }
-
-    &.lg::after {
-      background-position: ($lg-width / 3) * -1;
-    }
+  &:hover:not(.disabled) {
+    @include translateButtonGradient($button-hover-translation);
   }
 
   &:active {
-    &.sm::after {
-      background-position: ($sm-width / 2) * -1;
-    }
-
-    &.md::after {
-      background-position: ($md-width / 2) * -1;
-    }
-
-    &.lg::after {
-      background-position: ($lg-width / 2) * -1;
-    }
+    @include translateButtonGradient($button-active-translation);
   }
 
   &::before, &::after {
@@ -81,12 +66,40 @@ pop-button {
     left: 0;
   }
 
-  &::before {
-    background: adjust-hue($primary, 30deg);
+  &.primary:not(.disabled) {
+    &::before {
+      background: getGradientStopColor($primary);
+    }
+
+    &::after {
+      background-image: gradient($primary, 40%);
+    }
+  }
+
+  &.secondary:not(.disabled) {
+    &::before {
+      background: getGradientStopColor($secondary);
+    }
+
+    &::after {
+      background-image: gradient($secondary, 40%);
+    }
+  }
+
+  &.disabled {
+    color: $button-disabled-gray-text;
+    pointer-events: none;
+
+    &::before {
+      background: getGradientStopColor($button-disabled-gray);
+    }
+
+    &::after {
+      background-image: gradient($button-disabled-gray, 40%);
+    }
   }
 
   &::after {
-    background-image: gradient($primary, 40%);
     background-repeat: no-repeat;
     transition: background-position 0.5s;
   }

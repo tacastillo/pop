@@ -12,6 +12,7 @@
             "element",
             "pop",
             "kebab-case"
-        ]
+        ],
+        "component-class-suffix": false
     }
 }

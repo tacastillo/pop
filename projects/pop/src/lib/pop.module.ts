@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-import { PopComponent } from './pop.component';
-import { ButtonComponent } from './button/button.component';
+import { PopButton } from './button/button.component';
 
 @NgModule({
   imports: [
   ],
-  declarations: [PopComponent, ButtonComponent],
-  exports: [PopComponent, ButtonComponent]
+  declarations: [PopButton],
+  exports: [PopButton]
 })
 export class PopModule { }

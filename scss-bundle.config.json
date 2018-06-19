@@ -1,0 +1,4 @@
+{
+  "entry": "./projects/pop/src/lib/sass/_global.scss",
+  "dest": "dist/pop/global.scss"
+}

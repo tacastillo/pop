@@ -1,19 +1,73 @@
 @import '_variables.scss';
 
+
+/**
+ * Color
+ */
 @function shade($color, $percentage) {
-  @return mix(#000000, $color, $percentage);
+  @return mix($white, $color, $percentage);
 }
 
 @function tint($color, $percentage) {
-  @return mix(#FFFFFF, $color, $percentage);
+  @return mix($black, $color, $percentage);
 }
 
 @function gradient($color, $baseStopPercent) {
-  @return linear-gradient(110deg, $color 0%, $color $baseStopPercent, adjust-hue($color, 30deg) 80%);
+  $stopColor: getGradientStopColor($color);
+  @return linear-gradient(110deg, $color 0%, $color $baseStopPercent, $stopColor 80%);
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@function getGradientStopColor($color) {
+  @return shade(adjust-hue($color, $gradient-hue-adjustment), $gradient-hue-tint);
+}
+
+@mixin translateGradient($size, $amount) {
+  background-position: ($size / $amount) * -1;
+}
+
+@mixin translateButtonGradient($amount) {
+  &.icon::after {
+    @include translateGradient($button-icon-width, $amount);
+  }
+
+  &.sm::after {
+    @include translateGradient($button-sm-width, $amount);
+  }
+
+  &.md::after {
+    @include translateGradient($button-md-width, $amount);
+  }
+
+  &.lg::after {
+    @include translateGradient($button-lg-width, $amount);
+  }
+}
+
+/**
+ * Font/Typeface
+ */
+@mixin pop-h1() {
+  font-size: $h1-size;
+  font-weight: $fw-bold;
+}
+
+@mixin pop-h2() {
+  font-size: $h2-size;
+  font-weight: $fw-bold;
+}
+
+@mixin pop-h3() {
+  font-size: $h3-size;
+  font-weight: $fw-regular;
+}
+
+@mixin pop-body() {
+
+}
+
+/**
+ * Shadow
+ */
+@mixin shadow-base() {
+  box-shadow: -1px 1px 2px 1px $shadow-color;
 }
