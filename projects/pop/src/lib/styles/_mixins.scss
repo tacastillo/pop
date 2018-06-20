@@ -4,21 +4,21 @@
 /**
  * Color
  */
-@function shade($color, $percentage) {
+@function tint($color, $percentage) {
   @return mix($white, $color, $percentage);
 }
 
-@function tint($color, $percentage) {
+@function shade($color, $percentage) {
   @return mix($black, $color, $percentage);
 }
 
 @function gradient($color, $baseStopPercent) {
   $stopColor: getGradientStopColor($color);
-  @return linear-gradient(110deg, $color 0%, $color $baseStopPercent, $stopColor 80%);
+  @return linear-gradient(110deg, $color 0%, $color $baseStopPercent, $stopColor $gradient-stop-percentage);
 }
 
 @function getGradientStopColor($color) {
-  @return shade(adjust-hue($color, $gradient-hue-adjustment), $gradient-hue-tint);
+  @return tint(adjust-hue($color, $gradient-hue-adjustment), $gradient-hue-tint);
 }
 
 @mixin translateGradient($size, $amount) {
@@ -49,20 +49,26 @@
 @mixin pop-h1() {
   font-size: $h1-size;
   font-weight: $fw-bold;
+  font-family: $font-header;
+  margin: 0;
 }
 
 @mixin pop-h2() {
   font-size: $h2-size;
   font-weight: $fw-bold;
+  font-family: $font-header;
 }
 
 @mixin pop-h3() {
   font-size: $h3-size;
   font-weight: $fw-regular;
+  font-family: $font-body;
 }
 
 @mixin pop-body() {
-
+  font-size: $body-size;
+  font-weight: $fw-regular;
+  font-family: $font-body;
 }
 
 /**

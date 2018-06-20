@@ -1,0 +1,53 @@
+// Only npm_pack, replace this value with "~pop/dist/"
+$base_url: "../dist/pop/";
+@import "_variables.scss";
+@import "_normalize.scss";
+@import "_mixins.scss";
+@import url("https://use.fontawesome.com/releases/v5.0.13/css/all.css");
+@font-face {
+	font-family: 'Fira Mono'; // src: url("~pop/dist/assets/Fira_Mono/FiraMono-Regular.ttf");
+	src: url(#{$base_url + "assets/Fira_Mono/FiraMono-Regular.ttf"});
+}
+
+@font-face {
+	font-family: 'Assistant'; // src: url("~pop/dist/assets/Assistant/Assistant-Regular.ttf");
+	src: url(#{$base_url + "/assets/Assistant/Assistant-Light.ttf"});
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	@include pop-h1();
+}
+
+h2 {
+	@include pop-h2();
+}
+
+h3 {
+	@include pop-h3();
+}
+
+body {
+	@include pop-body();
+}
+
+html {
+	font-size: $rem-size-smaller;
+}
+
+@media screen and (min-width: 640px) {
+	html {
+		font-size: $rem-size-small;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	html {
+		font-size: $rem-size;
+	}
+}

@@ -1,3 +1,17 @@
-* {
-  font-family: Helvetica, Arial, sans-serif;
+
+.button-container {
+  pop-button {
+    margin: 24px;
+  }
+
+}
+
+.text-container {
+  display: grid;
+  grid-template-columns: 10% 1fr;
+  grid-column-gap: 2.5%;
+
+  .text-label {
+    text-align: right;
+  }
 }

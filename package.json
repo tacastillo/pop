@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "bundle-styles": "scss-bundle -c scss-bundle.config.json",
-    "build-pop": "ng build --prod pop && npm run bundle-styles",
+    "build-pop": "ng build --prod pop && ./bundle.sh",
     "npm-pack": "cd dist/pop && npm pack",
     "package": "npm run build-pop && npm run npm-pack",
     "compodoc": "./node_modules/.bin/compodoc -p projects/pop/tsconfig.lib.json -w -s -r 4201 -n Pop"

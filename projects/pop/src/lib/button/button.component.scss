@@ -1,106 +1,83 @@
-@import '../sass/_variables.scss';
-@import '../sass/_mixins.scss';
-
-@mixin button-theme($primaryColor, $secondaryColor) {
-  $primary: $primaryColor;
-  $secondary: $secondaryColor;
-}
-
+@import '../styles/_variables.scss';
+@import '../styles/_mixins.scss';
 pop-button {
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  text-align: center;
-
-  color: $white;
-  @include shadow-base();
-
-  padding: $button-padding;
-
-  min-height: $button-height;
-  line-height: $button-height;
-
-  * {
-    cursor: pointer;
-  }
-
-  &.icon {
-    min-width: $button-height;
-    border-radius: 100%;
-  }
-
-  &.sm {
-    min-width: $button-sm-width;
-    border-radius: $button-sm-width / 3;
-  }
-
-  &.md {
-    min-width: $button-md-width;
-    border-radius: $button-md-width / 3;
-  }
-
-  &.lg {
-    min-width: $button-lg-width;
-    border-radius: $button-lg-width / 3;
-  }
-
-  &:hover:not(.disabled) {
-    @include translateButtonGradient($button-hover-translation);
-  }
-
-  &:active {
-    @include translateButtonGradient($button-active-translation);
-  }
-
-  &::before, &::after {
-    content: '';
-
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    border-radius: 100px;
-
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  &.primary:not(.disabled) {
-    &::before {
-      background: getGradientStopColor($primary);
-    }
-
-    &::after {
-      background-image: gradient($primary, 40%);
-    }
-  }
-
-  &.secondary:not(.disabled) {
-    &::before {
-      background: getGradientStopColor($secondary);
-    }
-
-    &::after {
-      background-image: gradient($secondary, 40%);
-    }
-  }
-
-  &.disabled {
-    color: $button-disabled-gray-text;
-    pointer-events: none;
-
-    &::before {
-      background: getGradientStopColor($button-disabled-gray);
-    }
-
-    &::after {
-      background-image: gradient($button-disabled-gray, 40%);
-    }
-  }
-
-  &::after {
-    background-repeat: no-repeat;
-    transition: background-position 0.5s;
-  }
+	@include shadow-base();
+	display: inline-block;
+	position: relative;
+	padding: $button-padding;
+	min-height: $button-height;
+	font-size: $button-font-size;
+	text-align: center;
+	color: $white;
+	cursor: pointer;
+	* {
+		cursor: pointer;
+	}
+	&.icon {
+		min-width: $button-height;
+		border-radius: 100%;
+		.fa {
+			vertical-align: middle;
+		}
+	}
+	&.sm {
+		min-width: $button-sm-width;
+		border-radius: $button-sm-width / 3;
+	}
+	&.md {
+		min-width: $button-md-width;
+		border-radius: $button-md-width / 3;
+	}
+	&.lg {
+		min-width: $button-lg-width;
+		border-radius: $button-lg-width / 3;
+	}
+	&:hover:not(.disabled) {
+		@include translateButtonGradient($button-hover-translation);
+	}
+	&:active:not(.disabled) {
+		@include translateButtonGradient($button-active-translation);
+	}
+	&::before,
+	&::after {
+		content: '';
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+		border-radius: 100px;
+		z-index: -1;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	&.primary:not(.disabled) {
+		&::before {
+			background: getGradientStopColor($primary);
+		}
+		&::after {
+			background-image: gradient($primary, 40%);
+		}
+	}
+	&.secondary:not(.disabled) {
+		&::before {
+			background: getGradientStopColor($secondary);
+		}
+		&::after {
+			background-image: gradient($secondary, 40%);
+		}
+	}
+	&.disabled {
+		color: $button-disabled-gray-text;
+		pointer-events: none;
+		&::before {
+			background: getGradientStopColor($button-disabled-gray);
+		}
+		&::after {
+			background-image: gradient($button-disabled-gray, 40%);
+		}
+	}
+	&::after {
+		background-repeat: no-repeat;
+		transition: background-position 0.5s;
+	}
 }

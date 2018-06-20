@@ -13,6 +13,7 @@
             "pop",
             "kebab-case"
         ],
-        "component-class-suffix": false
+		"component-class-suffix": false,
+		"indent": [true, "tabs", 4]
     }
 }
