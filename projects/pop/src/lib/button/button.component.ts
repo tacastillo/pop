@@ -31,17 +31,12 @@ export class PopButton implements AfterContentInit, OnChanges {
 	 */
 	@Input('disabled') disabled = false;
 
-	/**
-	 * Expose the native HTML element to give parents more granular control
-	 */
-	public nativeEl: HTMLElement;
-
 	constructor(private elementRef: ElementRef, private renderer: Renderer2) {
-		this.nativeEl = elementRef.nativeElement;
 	}
 
 	ngAfterContentInit(): void {
 		this.addClasses();
+		console.log(this);
 	}
 
 	ngOnChanges(changes: SimpleChanges): void {
@@ -53,7 +48,7 @@ export class PopButton implements AfterContentInit, OnChanges {
 					className = property.previousValue ? 'disabled' : '';
 				}
 				if (className.length > 0) {
-					this.renderer.removeClass(this.nativeEl, className);
+					this.renderer.removeClass(this.elementRef.nativeElement, className);
 				}
 			}
 		}
@@ -65,11 +60,11 @@ export class PopButton implements AfterContentInit, OnChanges {
 	 * Factored out and called in `ngAfterContentInit` and `ngOnChanges`
 	 */
 	private addClasses(): void {
-		this.renderer.addClass(this.nativeEl, this.size);
-		this.renderer.addClass(this.nativeEl, this.type);
+		this.renderer.addClass(this.elementRef.nativeElement, this.size);
+		this.renderer.addClass(this.elementRef.nativeElement, this.type);
 
 		if (this.disabled) {
-			this.renderer.addClass(this.nativeEl, 'disabled');
+			this.renderer.addClass(this.elementRef.nativeElement, 'disabled');
 		}
 	}
 }

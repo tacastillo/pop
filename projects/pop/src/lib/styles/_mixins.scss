@@ -14,7 +14,7 @@
 
 @function gradient($color, $baseStopPercent) {
   $stopColor: getGradientStopColor($color);
-  @return linear-gradient(110deg, $color 0%, $color $baseStopPercent, $stopColor $gradient-stop-percentage);
+  @return linear-gradient($gradient-degree-tilt, $color 0%, $color $baseStopPercent, $stopColor $gradient-stop-percentage);
 }
 
 @function getGradientStopColor($color) {
@@ -27,19 +27,19 @@
 
 @mixin translateButtonGradient($amount) {
   &.icon::after {
-    @include translateGradient($button-icon-width, $amount);
+    @include translateGradient($button-icon-height, $amount);
   }
 
   &.sm::after {
-    @include translateGradient($button-sm-width, $amount);
+    @include translateGradient($button-sm-height, $amount);
   }
 
   &.md::after {
-    @include translateGradient($button-md-width, $amount);
+    @include translateGradient($button-md-height, $amount);
   }
 
   &.lg::after {
-    @include translateGradient($button-lg-width, $amount);
+    @include translateGradient($button-lg-height, $amount);
   }
 }
 

@@ -5,7 +5,8 @@ pop-button {
 	display: inline-block;
 	position: relative;
 	padding: $button-padding;
-	min-height: $button-height;
+	border-radius: $button-border-radius;
+	border: $shadow-color;
 	font-size: $button-font-size;
 	text-align: center;
 	color: $white;
@@ -14,23 +15,24 @@ pop-button {
 		cursor: pointer;
 	}
 	&.icon {
-		min-width: $button-height;
+		height: $button-icon-height;
+		max-width: $button-icon-height;
+		max-height: $button-icon-height;
+		width: $button-icon-height;;
+		padding: $button-icon-padding;
 		border-radius: 100%;
-		.fa {
-			vertical-align: middle;
-		}
 	}
 	&.sm {
-		min-width: $button-sm-width;
-		border-radius: $button-sm-width / 3;
+		height: $button-sm-height;
+		line-height: $button-sm-height / 4;
 	}
 	&.md {
-		min-width: $button-md-width;
-		border-radius: $button-md-width / 3;
+		height: $button-md-height;
+		line-height: $button-md-height / 2;
 	}
 	&.lg {
-		min-width: $button-lg-width;
-		border-radius: $button-lg-width / 3;
+		height: $button-lg-height;
+		line-height: $button-lg-height / 2;
 	}
 	&:hover:not(.disabled) {
 		@include translateButtonGradient($button-hover-translation);
@@ -44,7 +46,7 @@ pop-button {
 		display: inline-block;
 		width: 100%;
 		height: 100%;
-		border-radius: 100px;
+		border-radius: $button-border-radius;
 		z-index: -1;
 		position: absolute;
 		top: 0;
@@ -55,7 +57,7 @@ pop-button {
 			background: getGradientStopColor($primary);
 		}
 		&::after {
-			background-image: gradient($primary, 40%);
+			background-image: gradient($primary, 30%);
 		}
 	}
 	&.secondary:not(.disabled) {
@@ -63,7 +65,7 @@ pop-button {
 			background: getGradientStopColor($secondary);
 		}
 		&::after {
-			background-image: gradient($secondary, 40%);
+			background-image: gradient($secondary, 30%);
 		}
 	}
 	&.disabled {
@@ -73,7 +75,7 @@ pop-button {
 			background: getGradientStopColor($button-disabled-gray);
 		}
 		&::after {
-			background-image: gradient($button-disabled-gray, 40%);
+			background-image: gradient($button-disabled-gray, 30%);
 		}
 	}
 	&::after {

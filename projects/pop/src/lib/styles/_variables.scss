@@ -14,9 +14,12 @@ $gray-shade-1: #5d666d;
 $gray-shade-2: #3d4449;
 $gray-shade-3: #1e2124;
 
-$shadow-color: #00000040;
+$error-red: #E34132;
+
+$shadow-color: rgba(0, 0, 0, 0.4);
 
 $gradient-stop-percentage: 80%;
+$gradient-degree-tilt: 120deg;
 $gradient-hue-adjustment: 30deg;
 $gradient-hue-tint: 5%;
 
@@ -43,13 +46,15 @@ $fw-thin: 300;
  * Button
  */
 $button-font-size: 24px;
-$button-aspect-ratio: 2;
-$button-icon-width: 64px;
-$button-sm-width: 96px;
-$button-md-width: 192px;
-$button-lg-width: 288px;
-$button-height: 64px;
-$button-padding: 16px;
+$button-icon-height: 48px;
+$button-sm-height: 48px;
+$button-md-height: 64px;
+$button-lg-height: 80px;
+
+$button-padding: 16px 32px;
+$button-icon-padding: 12px;
+$button-border-radius: 200px;
+$button-border: 1px solid $shadow-color;
 $button-hover-translation: 4;
 $button-active-translation: 2;
 
