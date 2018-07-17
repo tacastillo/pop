@@ -1,4 +1,4 @@
-# Pop
+# Pop 
 
 **Pop** is an open-sourced Angular component library used to convey the personal brand of a developer (me). The library is heavily _experimental_ and is much more of a learning process than actual production quality package.
 
